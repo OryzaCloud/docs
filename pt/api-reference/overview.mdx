@@ -1,0 +1,67 @@
+---
+title: "Visão Geral"
+description: "Bem-vindo à Referência de API da Oryza. Gerencie servidores, arquivos, rotinas, bancos de dados e usuários programaticamente."
+icon: "globe"
+---
+
+A **API da Oryza** permite automatizar e gerenciar todos os recursos da plataforma Oryza. Seja desenvolvendo uma integração, bot de Discord, sistema de cobrança ou pipeline de deploy automatizado, nossa API RESTful disponibiliza controle total sobre seus servidores e infraestrutura.
+
+<CardGroup cols={2}>
+  <Card title="Autenticação" icon="lock" href="/pt/api-reference/authentication">
+    Aprenda como gerar chaves de API, configurar cabeçalhos Bearer e manipular sessões de navegador.
+  </Card>
+  <Card title="Client API" icon="server" href="/pt/api-reference/endpoint/servers/list">
+    Gerencie servidores, envie comandos de terminal, controle estados de energia e monitore o uso de recursos em tempo real.
+  </Card>
+</CardGroup>
+
+---
+
+## URL Base
+
+Todas as requisições devem ser enviadas ao domínio oficial do painel:
+
+```http
+https://app.oryzacloud.app
+```
+
+---
+
+## Resumo dos Recursos
+
+A API da Oryza está estruturada nas seguintes categorias:
+
+| Recurso | Caminho Base | Descrição |
+| :--- | :--- | :--- |
+| **Autenticação** | `/auth/*` | Login de usuários, validação 2FA, logout e redefinição de senhas. |
+| **Conta** | `/api/client/account` | Consulta de perfil, atualização de e-mail/senha, chaves de API e chaves SSH. |
+| **Permissões** | `/api/client/permissions` | Lista completa de permissões e privilégios disponíveis no sistema. |
+| **Servidores** | `/api/client/servers` | Gerenciamento de servidores, comandos de console, sinais de energia e métricas. |
+| **Bancos de Dados** | `/api/client/servers/{server_uuid}/databases` | Criação de bancos de dados MySQL/Postgres, rotação de senhas e exclusão. |
+| **Gerenciador de Arquivos** | `/api/client/servers/{server_uuid}/files` | Leitura, escrita, download, upload, compactação, extração e exclusão de arquivos. |
+| **Agendamentos** | `/api/client/servers/{server_uuid}/schedules` | Automação de rotinas (cron jobs), backups automáticos, comandos e tarefas. |
+| **Rede** | `/api/client/servers/{server_uuid}/network` | Alocação de portas, definição de IP/porta primário e notas de rede. |
+| **Subusuários** | `/api/client/servers/{server_uuid}/users` | Convite de usuários com permissões granulares para administração de servidores. |
+| **Backups** | `/api/client/servers/{server_uuid}/backups` | Criação, download, restauração, bloqueio contra exclusão e remoção de backups. |
+| **Configurações** | `/api/client/servers/{server_uuid}/settings` | Reinstalação de servidor, variáveis de boot, renomeação e imagem Docker. |
+
+---
+
+## Formato de Resposta
+
+Todas as respostas são retornadas no formato JSON padronizado:
+
+```json
+{
+  "object": "server",
+  "attributes": {
+    "server_owner": true,
+    "identifier": "b8f0473b",
+    "uuid": "b8f0473b-419a-4770-b42e-13101c565a04",
+    "name": "Minecraft Produção",
+    "node": "Node-US-East-1",
+    "is_node_under_maintenance": false,
+    "status": null
+  }
+}
+```

@@ -1,0 +1,59 @@
+---
+title: "Autenticação"
+description: "Aprenda como autenticar requisições na API da Oryza usando chaves de API ou sessões de navegador."
+icon: "lock"
+---
+
+A API da Oryza suporta dois modelos padrão de autenticação:
+
+1. **Client API Keys (Tokens Bearer)** — Recomendado para scripts externos, bots de Discord, CLIs e automações backend.
+2. **Sessões de Navegador (Cookies + CSRF)** — Utilizado por SPAs (Single-Page Applications) e interfaces web.
+
+---
+
+## 1. Chaves de API (Client API Keys)
+
+Para utilizar a Client API, gere uma chave diretamente no seu painel:
+
+1. Faça login no Oryza Panel em [app.oryzacloud.app](https://app.oryzacloud.app).
+2. Acesse **Configurações da Conta** -> **Credenciais de API**.
+3. Clique em **Criar Nova** e defina uma descrição e whitelist de IPs opcional.
+4. Copie a chave gerada.
+
+Envie a chave no cabeçalho `Authorization` de cada requisição com o prefixo `Bearer`:
+
+```http
+Authorization: Bearer SUA_CHAVE_CLIENT_API
+```
+
+### Exemplo de Requisição
+
+```bash cURL
+curl -X GET "https://app.oryzacloud.app/api/client" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer oryza_c1_xxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+<Warning>
+Sua chave de API possui as mesmas permissões da sua conta no painel. Nunca compartilhe sua chave em repositórios públicos do GitHub ou código frontend visível.
+</Warning>
+
+---
+
+## 2. Sessões de Navegador e Proteção CSRF
+
+Ao integrar o Oryza através de aplicações web:
+
+1. **Inicialização CSRF**: Faça uma requisição `GET /sanctum/csrf-cookie` para obter o cookie `XSRF-TOKEN`.
+2. **Login**: Envie as credenciais para `POST /auth/login`. Após autenticado, o servidor gerará o cookie de sessão `oryza_session`.
+3. **Envio do Token CSRF**: Envie o cabeçalho `X-XSRF-TOKEN` em todas as requisições de escrita (`POST`, `PUT`, `DELETE`).
+
+---
+
+## Cabeçalhos Padrão
+
+| Cabeçalho | Valor | Obrigatório | Descrição |
+| :--- | :--- | :--- | :--- |
+| `Accept` | `application/json` | Sim | Garante que todas as respostas e erros venham em formato JSON. |
+| `Content-Type` | `application/json` | Sim (p/ corpos) | Informa que os dados enviados no corpo estão em formato JSON. |
+| `Authorization` | `Bearer <CHAVE>` | Sim (Client API) | Token de autenticação da conta. |

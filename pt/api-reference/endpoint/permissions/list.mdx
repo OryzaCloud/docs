@@ -1,0 +1,44 @@
+---
+title: "Listar Permissões"
+description: "Retorna o dicionário de permissões disponíveis no sistema."
+api: "GET https://app.oryzacloud.app/api/client/permissions"
+openapi: "GET /api/client/permissions"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://app.oryzacloud.app/api/client/permissions" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/permissions", {
+  method: "GET",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

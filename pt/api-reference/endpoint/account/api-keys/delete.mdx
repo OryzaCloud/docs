@@ -1,0 +1,47 @@
+---
+title: "Excluir Chave de API"
+description: "Revoga e exclui permanentemente uma chave de API de cliente."
+api: "DELETE https://app.oryzacloud.app/api/client/account/api-keys/{identifier}"
+openapi: "DELETE /api/client/account/api-keys/{identifier}"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+<ParamField path="identifier" type="string" placeholder="Identifier" required>
+  Identificador exclusivo para identifier.
+</ParamField>
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://app.oryzacloud.app/api/client/account/api-keys/{identifier}" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/account/api-keys/{identifier}", {
+  method: "DELETE",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

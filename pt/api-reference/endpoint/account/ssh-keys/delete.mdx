@@ -1,0 +1,44 @@
+---
+title: "Remover Chave SSH"
+description: "Remove uma chave pública SSH cadastrada na conta."
+api: "POST https://app.oryzacloud.app/api/client/account/ssh-keys/remove"
+openapi: "POST /api/client/account/ssh-keys/remove"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://app.oryzacloud.app/api/client/account/ssh-keys/remove" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/account/ssh-keys/remove", {
+  method: "POST",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

@@ -1,0 +1,47 @@
+---
+title: "Listar Bancos de Dados"
+description: "Lista todas as instâncias de banco de dados vinculadas ao servidor."
+api: "GET https://app.oryzacloud.app/api/client/servers/{server_uuid}/databases"
+openapi: "GET /api/client/servers/{server_uuid}/databases"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+<ParamField path="server_uuid" type="string" placeholder="UUID do Servidor" required>
+  Identificador exclusivo para server uuid.
+</ParamField>
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://app.oryzacloud.app/api/client/servers/{server_uuid}/databases" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/servers/{server_uuid}/databases", {
+  method: "GET",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

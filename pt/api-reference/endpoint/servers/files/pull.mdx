@@ -1,0 +1,47 @@
+---
+title: "Baixar Arquivo Remoto"
+description: "Solicita o download de um arquivo a partir de uma URL remota."
+api: "POST https://app.oryzacloud.app/api/client/servers/{server_uuid}/files/pull"
+openapi: "POST /api/client/servers/{server_uuid}/files/pull"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+<ParamField path="server_uuid" type="string" placeholder="UUID do Servidor" required>
+  Identificador exclusivo para server uuid.
+</ParamField>
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://app.oryzacloud.app/api/client/servers/{server_uuid}/files/pull" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/servers/{server_uuid}/files/pull", {
+  method: "POST",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

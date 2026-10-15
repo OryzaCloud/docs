@@ -1,0 +1,50 @@
+---
+title: "Obter Backup"
+description: "Retorna metadados e status de conclusão de um backup específico."
+api: "GET https://app.oryzacloud.app/api/client/servers/{server_uuid}/backups/{backup_uuid}"
+openapi: "GET /api/client/servers/{server_uuid}/backups/{backup_uuid}"
+---
+
+import Authorization from "/pt/snippets/api/auth.mdx";
+import Status from "/pt/snippets/api/status.mdx";
+
+<Authorization />
+
+<ParamField path="server_uuid" type="string" placeholder="UUID do Servidor" required>
+  Identificador exclusivo para server uuid.
+</ParamField>
+<ParamField path="backup_uuid" type="string" placeholder="UUID do Backup" required>
+  Identificador exclusivo para backup uuid.
+</ParamField>
+
+### Resposta
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Atributos detalhados do recurso retornado.
+</ResponseField>
+
+### Exemplo de Uso
+
+<CodeGroup>
+```bash cURL
+curl -X GET "https://app.oryzacloud.app/api/client/servers/{server_uuid}/backups/{backup_uuid}" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer SUA_CHAVE_CLIENT_API"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/servers/{server_uuid}/backups/{backup_uuid}", {
+  method: "GET",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer SUA_CHAVE_CLIENT_API"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

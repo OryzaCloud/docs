@@ -1,0 +1,67 @@
+---
+title: "Overview"
+description: "Welcome to the Oryza API Reference. Manage servers, files, schedules, databases, and users programmatically."
+icon: "globe"
+---
+
+The **Oryza API** allows you to automate and manage all resources within the Oryza platform. Whether you are building an integration, Discord bot, billing portal, or automated deployment workflow, our RESTful API provides complete control over your servers and infrastructure.
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="lock" href="/en/api-reference/authentication">
+    Learn how to obtain API keys, configure Bearer headers, and handle session cookies.
+  </Card>
+  <Card title="Client API" icon="server" href="/en/api-reference/endpoint/servers/list">
+    Manage servers, execute console commands, trigger power states, and monitor real-time resource utilization.
+  </Card>
+</CardGroup>
+
+---
+
+## Base URL
+
+All API requests must be directed to our production panel URL:
+
+```http
+https://app.oryzacloud.app
+```
+
+---
+
+## Endpoints Summary
+
+The Oryza API reference is divided into the following categories:
+
+| Resource | Base Path | Description |
+| :--- | :--- | :--- |
+| **Authentication** | `/auth/*` | Handle user login, 2FA validation checkpoints, logout, and password recovery. |
+| **Account** | `/api/client/account` | Retrieve profile data, update email/password, manage API keys and SSH keys. |
+| **Permissions** | `/api/client/permissions` | Retrieve the complete list of available system permissions and roles. |
+| **Servers** | `/api/client/servers` | Manage game servers, execute commands, send power signals, and view metrics. |
+| **Databases** | `/api/client/servers/{server_uuid}/databases` | Provision MySQL/PostgreSQL databases, rotate passwords, and manage schemas. |
+| **File Manager** | `/api/client/servers/{server_uuid}/files` | Read, write, download, upload, compress, decompress, and manage server files. |
+| **Schedules** | `/api/client/servers/{server_uuid}/schedules` | Configure automated cron jobs, backup tasks, console commands, and triggers. |
+| **Network** | `/api/client/servers/{server_uuid}/network` | Assign ports, set primary connection IP/port, and manage allocations. |
+| **Subusers** | `/api/client/servers/{server_uuid}/users` | Invite users with granular permission controls to collaborate on servers. |
+| **Backups** | `/api/client/servers/{server_uuid}/backups` | Create, download, restore, lock, and delete server backup snapshots. |
+| **Configuration** | `/api/client/servers/{server_uuid}/settings` | Reinstall server, update startup variables, rename, or switch Docker images. |
+
+---
+
+## Response Format
+
+All responses are returned in JSON format:
+
+```json
+{
+  "object": "server",
+  "attributes": {
+    "server_owner": true,
+    "identifier": "b8f0473b",
+    "uuid": "b8f0473b-419a-4770-b42e-13101c565a04",
+    "name": "Production Minecraft",
+    "node": "Node-US-East-1",
+    "is_node_under_maintenance": false,
+    "status": null
+  }
+}
+```

@@ -1,0 +1,59 @@
+---
+title: "Authentication"
+description: "Learn how to authenticate requests to the Oryza API using API keys or browser sessions."
+icon: "lock"
+---
+
+The Oryza API supports two standard authentication mechanisms depending on your application architecture:
+
+1. **Client API Keys (Bearer Tokens)** — Recommended for headless scripts, backend bots, CI/CD pipelines, and CLI integrations.
+2. **Browser Sessions (Cookies + CSRF)** — Used by web frontends and Single-Page Applications (SPAs).
+
+---
+
+## 1. Client API Keys
+
+To interact with the Oryza Client API, generate a Client API key directly from your account:
+
+1. Log into your Oryza Panel at [app.oryzacloud.app](https://app.oryzacloud.app).
+2. Go to **Account Settings** -> **API Credentials**.
+3. Click **Create New** and provide an optional description and IP whitelist.
+4. Copy the generated key.
+
+Include your key in the `Authorization` header of every request:
+
+```http
+Authorization: Bearer YOUR_CLIENT_API_KEY
+```
+
+### Example Request
+
+```bash cURL
+curl -X GET "https://app.oryzacloud.app/api/client" \
+  -H "Accept: application/json" \
+  -H "Authorization: Bearer oryza_c1_xxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+<Warning>
+Your Client API key has the exact same permissions as your user account. Never expose your API keys in client-side code, public GitHub repositories, or untrusted environments.
+</Warning>
+
+---
+
+## 2. Browser Sessions & CSRF Protection
+
+When building frontends or web clients that authenticate users directly:
+
+1. **Initialize CSRF Cookie**: Make an initial request to `GET /sanctum/csrf-cookie` to obtain an `XSRF-TOKEN` cookie.
+2. **Sign In**: Submit credentials to `POST /auth/login`. On successful authentication, the server sets an `oryza_session` cookie.
+3. **Send CSRF Token**: Pass the `X-XSRF-TOKEN` header on all data mutation requests (`POST`, `PUT`, `DELETE`).
+
+---
+
+## Standard Headers
+
+| Header | Value | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `Accept` | `application/json` | Yes | Ensures all responses and error bodies are formatted in standard JSON. |
+| `Content-Type` | `application/json` | Yes (for bodies) | Informs the server of JSON payloads in request bodies. |
+| `Authorization` | `Bearer <API_KEY>` | Yes (Client API) | Authenticates API requests. |

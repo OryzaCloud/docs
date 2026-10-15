@@ -1,0 +1,48 @@
+---
+title: "Limitações e Restrições"
+description: "Entenda os limites de requisição, códigos de erro e diretrizes de uso da plataforma Oryza."
+icon: "shield-exclamation"
+---
+
+Para garantir estabilidade, segurança e performance contínua para todos os usuários, a API da Oryza aplica rate limits e regras de validação.
+
+## Limites de Requisições (Rate Limits)
+
+A API aplica limites por endereço IP e chave de API:
+
+| Grupo de Rotas | Limite | Descrição |
+| :--- | :--- | :--- |
+| **Autenticação (`/auth/*`)** | 10 req / min | Proteção contra ataques de força bruta em rotas de login e redefinição. |
+| **Client API (`/api/client/*`)** | 240 req / min | Limite padrão para servidores, arquivos, bancos de dados e tarefas. |
+| **Console WebSocket** | 1 conexão / servidor | Conexão de streaming em tempo real do terminal por sessão de usuário. |
+
+Quando o limite é atingido, o servidor responde com código HTTP `429 Too Many Requests`:
+
+```json
+{
+  "errors": [
+    {
+      "code": "TooManyRequestsHttpException",
+      "status": "429",
+      "detail": "Too Many Requests"
+    }
+  ]
+}
+```
+
+---
+
+## Códigos de Status HTTP
+
+| Código | Significado |
+| :--- | :--- |
+| `200 OK` | Requisição executada com sucesso e dados retornados. |
+| `201 Created` | Recurso criado com sucesso. |
+| `204 No Content` | Requisição executada com sucesso sem corpo de resposta. |
+| `400 Bad Request` | Parâmetros inválidos ou requisição incorreta. |
+| `401 Unauthorized` | Chave de API ou sessão inválida, expirada ou ausente. |
+| `403 Forbidden` | Você não tem permissão para realizar esta ação no servidor. |
+| `404 Not Found` | O servidor, arquivo, banco de dados ou recurso não foi encontrado. |
+| `422 Unprocessable Entity` | Erro de validação nos campos do formulário/corpo enviado. |
+| `429 Too Many Requests` | Limite de taxa de requisições excedido. |
+| `500 Server Error` | Erro interno no servidor do painel ou nó de hospedagem. |

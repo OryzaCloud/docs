@@ -1,0 +1,50 @@
+---
+title: "Delete Allocation"
+description: "Unassign and remove an allocation."
+api: "DELETE https://app.oryzacloud.app/api/client/servers/{server_uuid}/network/allocations/{allocation_id}"
+openapi: "DELETE /api/client/servers/{server_uuid}/network/allocations/{allocation_id}"
+---
+
+import Authorization from "/en/snippets/api/auth.mdx";
+import Status from "/en/snippets/api/status.mdx";
+
+<Authorization />
+
+<ParamField path="server_uuid" type="string" placeholder="Server UUID" required>
+  The unique identifier for the server uuid.
+</ParamField>
+<ParamField path="allocation_id" type="string" placeholder="Allocation Id" required>
+  The unique identifier for the allocation id.
+</ParamField>
+
+### Response
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Detailed attributes of the returned resource.
+</ResponseField>
+
+### Example Usage
+
+<CodeGroup>
+```bash cURL
+curl -X DELETE "https://app.oryzacloud.app/api/client/servers/{server_uuid}/network/allocations/{allocation_id}" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_CLIENT_API_KEY"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/api/client/servers/{server_uuid}/network/allocations/{allocation_id}", {
+  method: "DELETE",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer YOUR_CLIENT_API_KEY"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

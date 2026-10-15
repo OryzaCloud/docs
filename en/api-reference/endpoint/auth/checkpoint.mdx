@@ -1,0 +1,40 @@
+---
+title: "2FA Checkpoint"
+description: "Verify time-based one-time password (TOTP) during login."
+api: "POST https://app.oryzacloud.app/auth/login/checkpoint"
+openapi: "POST /auth/login/checkpoint"
+---
+
+import Status from "/en/snippets/api/status.mdx";
+
+
+
+### Response
+
+<Status />
+
+<ResponseField name="attributes" type="object">
+  Detailed attributes of the returned resource.
+</ResponseField>
+
+### Example Usage
+
+<CodeGroup>
+```bash cURL
+curl -X POST "https://app.oryzacloud.app/auth/login/checkpoint" \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json"
+```
+
+```javascript JavaScript (Fetch)
+const response = await fetch("https://app.oryzacloud.app/auth/login/checkpoint", {
+  method: "POST",
+  headers: {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  }
+});
+const data = await response.json();
+console.log(data);
+```
+</CodeGroup>

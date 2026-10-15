@@ -1,0 +1,391 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Oryza",
+  "colors": {
+    "primary": "#7C3AED",
+    "light": "#9067F5",
+    "dark": "#7C3AED"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "languages": [
+      {
+        "language": "pt-BR",
+        "default": true,
+        "groups": [
+          {
+            "group": "Introdu\u00e7\u00e3o",
+            "pages": [
+              "pt/api-reference/overview",
+              "pt/api-reference/authentication",
+              "pt/api-reference/limitations-and-restrictions"
+            ]
+          },
+          {
+            "group": "Autentica\u00e7\u00e3o",
+            "pages": [
+              "pt/api-reference/endpoint/auth/login",
+              "pt/api-reference/endpoint/auth/checkpoint",
+              "pt/api-reference/endpoint/auth/logout",
+              "pt/api-reference/endpoint/auth/password",
+              "pt/api-reference/endpoint/auth/reset-password",
+              "pt/api-reference/endpoint/auth/csrf-cookie"
+            ]
+          },
+          {
+            "group": "Conta",
+            "pages": [
+              "pt/api-reference/endpoint/account/get",
+              "pt/api-reference/endpoint/account/update-email",
+              "pt/api-reference/endpoint/account/update-password",
+              "pt/api-reference/endpoint/account/activity",
+              {
+                "group": "Autentica\u00e7\u00e3o em Duas Etapas",
+                "pages": [
+                  "pt/api-reference/endpoint/account/two-factor/get",
+                  "pt/api-reference/endpoint/account/two-factor/enable",
+                  "pt/api-reference/endpoint/account/two-factor/disable"
+                ]
+              },
+              {
+                "group": "Chaves de API",
+                "pages": [
+                  "pt/api-reference/endpoint/account/api-keys/list",
+                  "pt/api-reference/endpoint/account/api-keys/create",
+                  "pt/api-reference/endpoint/account/api-keys/delete"
+                ]
+              },
+              {
+                "group": "Chaves SSH",
+                "pages": [
+                  "pt/api-reference/endpoint/account/ssh-keys/list",
+                  "pt/api-reference/endpoint/account/ssh-keys/create",
+                  "pt/api-reference/endpoint/account/ssh-keys/delete"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Permiss\u00f5es",
+            "pages": [
+              "pt/api-reference/endpoint/permissions/list"
+            ]
+          },
+          {
+            "group": "Servidores",
+            "pages": [
+              "pt/api-reference/endpoint/servers/list",
+              "pt/api-reference/endpoint/servers/get",
+              "pt/api-reference/endpoint/servers/resources",
+              "pt/api-reference/endpoint/servers/activity",
+              "pt/api-reference/endpoint/servers/websocket",
+              "pt/api-reference/endpoint/servers/command",
+              "pt/api-reference/endpoint/servers/power",
+              {
+                "group": "Bancos de Dados",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/databases/list",
+                  "pt/api-reference/endpoint/servers/databases/create",
+                  "pt/api-reference/endpoint/servers/databases/rotate-password",
+                  "pt/api-reference/endpoint/servers/databases/delete"
+                ]
+              },
+              {
+                "group": "Gerenciador de Arquivos",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/files/list",
+                  "pt/api-reference/endpoint/servers/files/contents",
+                  "pt/api-reference/endpoint/servers/files/download",
+                  "pt/api-reference/endpoint/servers/files/write",
+                  "pt/api-reference/endpoint/servers/files/create-folder",
+                  "pt/api-reference/endpoint/servers/files/rename",
+                  "pt/api-reference/endpoint/servers/files/copy",
+                  "pt/api-reference/endpoint/servers/files/compress",
+                  "pt/api-reference/endpoint/servers/files/decompress",
+                  "pt/api-reference/endpoint/servers/files/delete",
+                  "pt/api-reference/endpoint/servers/files/chmod",
+                  "pt/api-reference/endpoint/servers/files/pull",
+                  "pt/api-reference/endpoint/servers/files/upload"
+                ]
+              },
+              {
+                "group": "Agendamentos",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/schedules/list",
+                  "pt/api-reference/endpoint/servers/schedules/create",
+                  "pt/api-reference/endpoint/servers/schedules/get",
+                  "pt/api-reference/endpoint/servers/schedules/update",
+                  "pt/api-reference/endpoint/servers/schedules/execute",
+                  "pt/api-reference/endpoint/servers/schedules/delete"
+                ]
+              },
+              {
+                "group": "Agendamentos - Tarefas",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/schedules/tasks/create",
+                  "pt/api-reference/endpoint/servers/schedules/tasks/update",
+                  "pt/api-reference/endpoint/servers/schedules/tasks/delete"
+                ]
+              },
+              {
+                "group": "Aloca\u00e7\u00f5es de Rede",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/network/list",
+                  "pt/api-reference/endpoint/servers/network/create",
+                  "pt/api-reference/endpoint/servers/network/update",
+                  "pt/api-reference/endpoint/servers/network/set-primary",
+                  "pt/api-reference/endpoint/servers/network/delete"
+                ]
+              },
+              {
+                "group": "Subusu\u00e1rios",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/users/list",
+                  "pt/api-reference/endpoint/servers/users/create",
+                  "pt/api-reference/endpoint/servers/users/get",
+                  "pt/api-reference/endpoint/servers/users/update",
+                  "pt/api-reference/endpoint/servers/users/delete"
+                ]
+              },
+              {
+                "group": "Backups",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/backups/list",
+                  "pt/api-reference/endpoint/servers/backups/create",
+                  "pt/api-reference/endpoint/servers/backups/get",
+                  "pt/api-reference/endpoint/servers/backups/download",
+                  "pt/api-reference/endpoint/servers/backups/lock",
+                  "pt/api-reference/endpoint/servers/backups/restore",
+                  "pt/api-reference/endpoint/servers/backups/delete"
+                ]
+              },
+              {
+                "group": "Inicializa\u00e7\u00e3o",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/startup/get",
+                  "pt/api-reference/endpoint/servers/startup/update"
+                ]
+              },
+              {
+                "group": "Configura\u00e7\u00f5es",
+                "pages": [
+                  "pt/api-reference/endpoint/servers/settings/rename",
+                  "pt/api-reference/endpoint/servers/settings/reinstall",
+                  "pt/api-reference/endpoint/servers/settings/docker-image"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "en-US",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "en/api-reference/overview",
+              "en/api-reference/authentication",
+              "en/api-reference/limitations-and-restrictions"
+            ]
+          },
+          {
+            "group": "Authentication",
+            "pages": [
+              "en/api-reference/endpoint/auth/login",
+              "en/api-reference/endpoint/auth/checkpoint",
+              "en/api-reference/endpoint/auth/logout",
+              "en/api-reference/endpoint/auth/password",
+              "en/api-reference/endpoint/auth/reset-password",
+              "en/api-reference/endpoint/auth/csrf-cookie"
+            ]
+          },
+          {
+            "group": "Account",
+            "pages": [
+              "en/api-reference/endpoint/account/get",
+              "en/api-reference/endpoint/account/update-email",
+              "en/api-reference/endpoint/account/update-password",
+              "en/api-reference/endpoint/account/activity",
+              {
+                "group": "Two-Factor Authentication",
+                "pages": [
+                  "en/api-reference/endpoint/account/two-factor/get",
+                  "en/api-reference/endpoint/account/two-factor/enable",
+                  "en/api-reference/endpoint/account/two-factor/disable"
+                ]
+              },
+              {
+                "group": "API Keys",
+                "pages": [
+                  "en/api-reference/endpoint/account/api-keys/list",
+                  "en/api-reference/endpoint/account/api-keys/create",
+                  "en/api-reference/endpoint/account/api-keys/delete"
+                ]
+              },
+              {
+                "group": "SSH Keys",
+                "pages": [
+                  "en/api-reference/endpoint/account/ssh-keys/list",
+                  "en/api-reference/endpoint/account/ssh-keys/create",
+                  "en/api-reference/endpoint/account/ssh-keys/delete"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Permissions",
+            "pages": [
+              "en/api-reference/endpoint/permissions/list"
+            ]
+          },
+          {
+            "group": "Servers",
+            "pages": [
+              "en/api-reference/endpoint/servers/list",
+              "en/api-reference/endpoint/servers/get",
+              "en/api-reference/endpoint/servers/resources",
+              "en/api-reference/endpoint/servers/activity",
+              "en/api-reference/endpoint/servers/websocket",
+              "en/api-reference/endpoint/servers/command",
+              "en/api-reference/endpoint/servers/power",
+              {
+                "group": "Databases",
+                "pages": [
+                  "en/api-reference/endpoint/servers/databases/list",
+                  "en/api-reference/endpoint/servers/databases/create",
+                  "en/api-reference/endpoint/servers/databases/rotate-password",
+                  "en/api-reference/endpoint/servers/databases/delete"
+                ]
+              },
+              {
+                "group": "File Manager",
+                "pages": [
+                  "en/api-reference/endpoint/servers/files/list",
+                  "en/api-reference/endpoint/servers/files/contents",
+                  "en/api-reference/endpoint/servers/files/download",
+                  "en/api-reference/endpoint/servers/files/write",
+                  "en/api-reference/endpoint/servers/files/create-folder",
+                  "en/api-reference/endpoint/servers/files/rename",
+                  "en/api-reference/endpoint/servers/files/copy",
+                  "en/api-reference/endpoint/servers/files/compress",
+                  "en/api-reference/endpoint/servers/files/decompress",
+                  "en/api-reference/endpoint/servers/files/delete",
+                  "en/api-reference/endpoint/servers/files/chmod",
+                  "en/api-reference/endpoint/servers/files/pull",
+                  "en/api-reference/endpoint/servers/files/upload"
+                ]
+              },
+              {
+                "group": "Schedules",
+                "pages": [
+                  "en/api-reference/endpoint/servers/schedules/list",
+                  "en/api-reference/endpoint/servers/schedules/create",
+                  "en/api-reference/endpoint/servers/schedules/get",
+                  "en/api-reference/endpoint/servers/schedules/update",
+                  "en/api-reference/endpoint/servers/schedules/execute",
+                  "en/api-reference/endpoint/servers/schedules/delete"
+                ]
+              },
+              {
+                "group": "Schedules - Tasks",
+                "pages": [
+                  "en/api-reference/endpoint/servers/schedules/tasks/create",
+                  "en/api-reference/endpoint/servers/schedules/tasks/update",
+                  "en/api-reference/endpoint/servers/schedules/tasks/delete"
+                ]
+              },
+              {
+                "group": "Network Allocations",
+                "pages": [
+                  "en/api-reference/endpoint/servers/network/list",
+                  "en/api-reference/endpoint/servers/network/create",
+                  "en/api-reference/endpoint/servers/network/update",
+                  "en/api-reference/endpoint/servers/network/set-primary",
+                  "en/api-reference/endpoint/servers/network/delete"
+                ]
+              },
+              {
+                "group": "Subusers",
+                "pages": [
+                  "en/api-reference/endpoint/servers/users/list",
+                  "en/api-reference/endpoint/servers/users/create",
+                  "en/api-reference/endpoint/servers/users/get",
+                  "en/api-reference/endpoint/servers/users/update",
+                  "en/api-reference/endpoint/servers/users/delete"
+                ]
+              },
+              {
+                "group": "Backups",
+                "pages": [
+                  "en/api-reference/endpoint/servers/backups/list",
+                  "en/api-reference/endpoint/servers/backups/create",
+                  "en/api-reference/endpoint/servers/backups/get",
+                  "en/api-reference/endpoint/servers/backups/download",
+                  "en/api-reference/endpoint/servers/backups/lock",
+                  "en/api-reference/endpoint/servers/backups/restore",
+                  "en/api-reference/endpoint/servers/backups/delete"
+                ]
+              },
+              {
+                "group": "Startup",
+                "pages": [
+                  "en/api-reference/endpoint/servers/startup/get",
+                  "en/api-reference/endpoint/servers/startup/update"
+                ]
+              },
+              {
+                "group": "Settings",
+                "pages": [
+                  "en/api-reference/endpoint/servers/settings/rename",
+                  "en/api-reference/endpoint/servers/settings/reinstall",
+                  "en/api-reference/endpoint/servers/settings/docker-image"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Oryza Cloud",
+          "href": "https://app.oryzacloud.app",
+          "icon": "globe"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "https://app.oryzacloud.app"
+  },
+  "api": {
+    "openapi": "openapi.json",
+    "mdx": {
+      "server": "https://app.oryzacloud.app",
+      "auth": {
+        "method": "bearer"
+      }
+    }
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "background": {
+    "color": {
+      "light": "#FAF8FF",
+      "dark": "#0D0822"
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.oryzacloud.app"
+    }
+  }
+}
